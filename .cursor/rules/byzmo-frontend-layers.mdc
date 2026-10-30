@@ -1,0 +1,29 @@
+---
+description: Enforce frontend layer architecture for byzmo-v2/web
+globs: byzmo-v2/web/src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Frontend layers (byzmo-v2/web)
+
+Layer rules for code under `byzmo-v2/web/src`.  
+**Migration process** (waves, orchestration/checklist): see `.cursor/docs/workflow.md` — not this file.
+
+When implementing a feature, also respect the **active** module playbook under `.cursor/docs/<module>/orchestration.md` for what belongs in this slice.
+
+## Dependency direction
+
+- `ui` → `presentation` (+ `dataStore` if needed). Not `data` or `domain` use cases directly.
+- `presentation` → `domain` (+ `dataStore`). Not REST clients.
+- `domain` → nothing outward (models, repo interfaces, use cases only).
+- `data` → implements domain repository interfaces; owns REST/DTOs/mappers.
+- `app` → thin Next routes that render `ui` views.
+- `ioc` → wires bindings.
+
+## Feature shape
+
+Mirror `Clients` / `Packages`: `domain/<Feature>`, `data/network/rest/v1/<Feature>`, `presentation/<Feature>`, `ui/<Feature>`.
+
+## Contracts
+
+Preserve Byzmo API contracts. UI from `.cursor/docs/ui/references/` when present.

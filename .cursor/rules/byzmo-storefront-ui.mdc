@@ -1,0 +1,15 @@
+---
+description: Byzmo storefront UI direction for v2 migration
+globs: byzmo-v2/web/**/*.{tsx,ts,scss,css}
+alwaysApply: false
+---
+
+# Storefront UI (byzmo-v2/web)
+
+Before storefront UI work in `byzmo-v2/web`:
+
+1. Read `.cursor/docs/ui/ui-brief.md`
+2. Use files in `.cursor/docs/ui/references/` as the **visual source of truth** (user-provided mockups)
+3. Follow the active module checklist under `.cursor/docs/<module>/checklist.md` (e.g. `.cursor/docs/catalog/checklist.md`, `.cursor/docs/cart/checklist.md`)
+
+Do not invent a competing design once references exist. Preserve API contracts and legacy workflows.
